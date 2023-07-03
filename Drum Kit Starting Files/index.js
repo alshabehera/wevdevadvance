@@ -3,12 +3,14 @@ for(var i=0;i<btnLength;i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
         var text=this.textContent;
         buttonPressed(text);
+        AnimationButton(text);
         })
 }
 
 document.addEventListener("keydown",function(event){
     console.log(event);
     buttonPressed(event.key);
+    AnimationButton(event.key);
 })
 
 
@@ -45,5 +47,17 @@ function buttonPressed(key){
         default:console.log("sd")
             break;
     }
+
+
+}
+
+function AnimationButton(currentKey){
+    var action = document.querySelector("."+currentKey);
+    action.classList.add("pressed");
+
+    setTimeout(function () {
+        action.classList.remove("pressed");
+        
+    },100)
 
 }
